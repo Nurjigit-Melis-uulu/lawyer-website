@@ -16,16 +16,18 @@ backdrop.addEventListener("click", () => {
 });
 
 function menu_toggle() {
-  if (menu_open) {
-    mobileNav.style.height = "100%";
-    nav.style.backgroundColor = "#1B2131";
-    nav.style.boxShadow = "0 0 6px rgba(0,0,0,.5)";
-    backdrop.style.display = "block";
-  } else {
-    mobileNav.style.height = "0";
-    nav.style.backgroundColor = "transparent";
-    nav.style.boxShadow = "none";
-    backdrop.style.display = "none";
+  if (window.innerWidth < 769) {
+    if (menu_open) {
+      mobileNav.style.height = "100%";
+      nav.style.backgroundColor = "#1B2131";
+      nav.style.boxShadow = "0 0 6px rgba(0,0,0,.5)";
+      backdrop.style.display = "block";
+    } else {
+      mobileNav.style.height = "0";
+      nav.style.backgroundColor = "transparent";
+      nav.style.boxShadow = "none";
+      backdrop.style.display = "none";
+    }
   }
 }
 
@@ -40,9 +42,8 @@ window.addEventListener("scroll", () => {
 });
 
 for (let anchor of anchors) {
-  anchor.addEventListener("mousedown", function (e) {
+  anchor.addEventListener("mousedown", (e) => {
     e.preventDefault();
-    menu_open = false;
 
     const blockID = anchor.getAttribute("href");
 
@@ -57,6 +58,8 @@ for (let anchor of anchors) {
         block: "start",
       });
     }
+
+    menu_open = false;
     menu_toggle();
   });
 }

@@ -42,7 +42,7 @@ window.addEventListener("scroll", () => {
 });
 
 for (let anchor of anchors) {
-  anchor.addEventListener("mousedown", (e) => {
+  anchor.addEventListener("click", (e) => {
     e.preventDefault();
 
     const blockID = anchor.getAttribute("href");
